@@ -5,7 +5,7 @@
   <description>Raspberry Pi RP2xxx Device Family Pack</description>
   <vendor>RaspberryPi</vendor>
   <!-- <license>license.txt</license> -->
-  <url>https://github.com/raspberrypi/cmsis-rp2xxx-dfp/releases/download/v0.9.4/</url>
+  <url>https://github.com/raspberrypi/cmsis-rp2xxx-dfp/releases/download/v0.9.5/</url>
   <repository type="git">https://github.com/raspberrypi/cmsis-rp2xxx-dfp.git</repository>
 
   <releases>
@@ -36,7 +36,7 @@
         <compile header="CMSIS/Device/RP2040/Include/rp2040.h" define="RP2040"/>
         <environment name="uv">
           <CMisc>-std=gnu11</CMisc>
-          <LMisc>--diag_suppress=L6314,L6170</LMisc>
+          <LMisc>--diag_suppress=L6314,L6170 --entry=Reset_Handler</LMisc>
           <preBuild2>$Stools\pio_all.bat</preBuild2>
           <postBuild2>$Stools\elf2uf2.exe "#L" ".\@L.uf2"</postBuild2>
         </environment>
@@ -253,9 +253,10 @@
         <file category="header"       name="CMSIS/Device/RP2040/Include/rp2040.h"/>
 
         <!-- startup / linker file -->
-        <file category="sourceC"                        name="CMSIS/Device/RP2040/Source/startup_rp2040.c"     version="1.2.0" attr="config"/>
-        <file category="linkerScript" condition="ARMCC" name="CMSIS/Device/RP2040/Source/ARM/rp2040.sct"       version="1.2.1" attr="config"/>
-        <file category="linkerScript" condition="GCC"   name="CMSIS/Device/RP2040/Source/GCC/gcc_arm.ld"       version="1.0.0" attr="config"/>
+        <file category="sourceC"                        name="CMSIS/Device/RP2040/Source/startup_rp2040.c"          version="1.2.1" attr="config"/>
+        <file category="linkerScript" condition="ARMCC" name="CMSIS/Device/RP2040/Source/ARM/rp2040.sct"            version="1.2.1" attr="config"/>
+        <file category="linkerScript" condition="ARMCC" name="CMSIS/Device/RP2040/Source/ARM/rp2040_no_flash.sct"   version="1.0.0" attr="config"/>
+        <file category="linkerScript" condition="GCC"   name="CMSIS/Device/RP2040/Source/GCC/gcc_arm.ld"            version="1.0.0" attr="config"/>
 
         <!-- system file -->
         <file category="sourceC"                        name="CMSIS/Device/RP2040/Source/system_rp2040.c"      version="1.1.0" attr="config"/>
